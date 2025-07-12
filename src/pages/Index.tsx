@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -47,7 +46,13 @@ const Index = () => {
         return;
       }
 
-      setVideos(data || []);
+      // Cast the data to ensure proper typing
+      const typedVideos: Video[] = (data || []).map(video => ({
+        ...video,
+        category: video.category as 'shorts' | 'full'
+      }));
+
+      setVideos(typedVideos);
     } catch (error) {
       console.error('Error:', error);
     } finally {

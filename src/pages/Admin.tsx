@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,7 +49,14 @@ const Admin = () => {
         return;
       }
 
-      setVideos(data || []);
+      // Cast the data to ensure proper typing
+      const typedVideos: Video[] = (data || []).map(video => ({
+        ...video,
+        category: video.category as 'shorts' | 'full',
+        youtubeUrl: video.youtube_url
+      }));
+
+      setVideos(typedVideos);
     } catch (error) {
       console.error('Error:', error);
     }
