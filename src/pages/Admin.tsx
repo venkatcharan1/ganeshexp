@@ -5,18 +5,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Upload, Trash2, Edit, Save, X } from "lucide-react";
+import { Upload, Trash2, Edit, Save, X, Video } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Video {
   id: string;
   title: string;
   description: string;
-  thumbnail: string;
-  videoUrl: string;
+  thumbnail_url?: string;
+  video_file_path: string;
   youtubeUrl?: string;
   category: 'shorts' | 'full';
-  createdAt: string;
+  created_at: string;
 }
 
 const Admin = () => {
@@ -25,68 +26,150 @@ const Admin = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    thumbnail: "",
-    videoUrl: "",
     youtubeUrl: "",
     category: "full" as 'shorts' | 'full'
   });
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
-    const savedVideos = localStorage.getItem('ganeshdrsr-videos');
-    if (savedVideos) {
-      setVideos(JSON.parse(savedVideos));
-    }
+    fetchVideos();
   }, []);
 
-  const saveVideos = (updatedVideos: Video[]) => {
-    localStorage.setItem('ganeshdrsr-videos', JSON.stringify(updatedVideos));
-    setVideos(updatedVideos);
+  const fetchVideos = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('videos')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching videos:', error);
+        return;
+      }
+
+      setVideos(data || []);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const uploadFile = async (file: File, bucket: string, path: string) => {
+    const { data, error } = await supabase.storage
+      .from(bucket)
+      .upload(path, file);
+
+    if (error) {
+      throw error;
+    }
+
+    const { data: urlData } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(path);
+
+    return urlData.publicUrl;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.title || !formData.description || !formData.videoUrl) {
+    if (!formData.title || !formData.description || !videoFile) {
       toast({
         title: "Error",
-        description: "Please fill in all required fields",
+        description: "Please fill in all required fields and select a video file",
         variant: "destructive"
       });
       return;
     }
 
-    const newVideo: Video = {
-      id: Date.now().toString(),
-      ...formData,
-      createdAt: new Date().toISOString()
-    };
+    setIsUploading(true);
 
-    const updatedVideos = [newVideo, ...videos];
-    saveVideos(updatedVideos);
-    
-    setFormData({
-      title: "",
-      description: "",
-      thumbnail: "",
-      videoUrl: "",
-      youtubeUrl: "",
-      category: "full"
-    });
+    try {
+      // Upload video file
+      const videoPath = `videos/${Date.now()}_${videoFile.name}`;
+      const videoUrl = await uploadFile(videoFile, 'videos', videoPath);
 
-    toast({
-      title: "Success!",
-      description: "Video uploaded successfully and is now visible on the website"
-    });
+      // Upload thumbnail if provided
+      let thumbnailUrl = null;
+      if (thumbnailFile) {
+        const thumbnailPath = `thumbnails/${Date.now()}_${thumbnailFile.name}`;
+        thumbnailUrl = await uploadFile(thumbnailFile, 'videos', thumbnailPath);
+      }
+
+      // Insert video record
+      const { data, error } = await supabase
+        .from('videos')
+        .insert([
+          {
+            title: formData.title,
+            description: formData.description,
+            category: formData.category,
+            video_file_path: videoUrl,
+            thumbnail_url: thumbnailUrl,
+            youtube_url: formData.youtubeUrl || null
+          }
+        ])
+        .select();
+
+      if (error) {
+        throw error;
+      }
+
+      // Reset form
+      setFormData({
+        title: "",
+        description: "",
+        youtubeUrl: "",
+        category: "full"
+      });
+      setVideoFile(null);
+      setThumbnailFile(null);
+
+      // Refresh videos list
+      await fetchVideos();
+
+      toast({
+        title: "Success!",
+        description: "Video uploaded successfully and is now visible on the website"
+      });
+    } catch (error) {
+      console.error('Upload error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to upload video. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
-  const handleDelete = (id: string) => {
-    const updatedVideos = videos.filter(video => video.id !== id);
-    saveVideos(updatedVideos);
-    toast({
-      title: "Deleted",
-      description: "Video has been removed from the website"
-    });
+  const handleDelete = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('videos')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        throw error;
+      }
+
+      await fetchVideos();
+      toast({
+        title: "Deleted",
+        description: "Video has been removed from the website"
+      });
+    } catch (error) {
+      console.error('Delete error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to delete video",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleEdit = (video: Video) => {
@@ -94,39 +177,53 @@ const Admin = () => {
     setFormData({
       title: video.title,
       description: video.description,
-      thumbnail: video.thumbnail,
-      videoUrl: video.videoUrl,
       youtubeUrl: video.youtubeUrl || "",
       category: video.category
     });
   };
 
-  const handleUpdate = (e: React.FormEvent) => {
+  const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!editingVideo) return;
 
-    const updatedVideos = videos.map(video => 
-      video.id === editingVideo 
-        ? { ...video, ...formData }
-        : video
-    );
-    
-    saveVideos(updatedVideos);
-    setEditingVideo(null);
-    setFormData({
-      title: "",
-      description: "",
-      thumbnail: "",
-      videoUrl: "",
-      youtubeUrl: "",
-      category: "full"
-    });
+    try {
+      const { error } = await supabase
+        .from('videos')
+        .update({
+          title: formData.title,
+          description: formData.description,
+          category: formData.category,
+          youtube_url: formData.youtubeUrl || null
+        })
+        .eq('id', editingVideo);
 
-    toast({
-      title: "Updated!",
-      description: "Video has been updated successfully"
-    });
+      if (error) {
+        throw error;
+      }
+
+      setEditingVideo(null);
+      setFormData({
+        title: "",
+        description: "",
+        youtubeUrl: "",
+        category: "full"
+      });
+
+      await fetchVideos();
+
+      toast({
+        title: "Updated!",
+        description: "Video has been updated successfully"
+      });
+    } catch (error) {
+      console.error('Update error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to update video",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -137,38 +234,41 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-blue-950 dark:to-indigo-950 p-8 animate-fade-in">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Admin Panel</h1>
+        <div className="mb-8 animate-slide-in-right">
+          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Admin Panel
+          </h1>
           <p className="text-muted-foreground">Manage your dropshipping video content</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Upload Form */}
-          <Card>
+          <Card className="animate-scale-in shadow-lg border-0 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center">
-                <Upload className="h-5 w-5 mr-2" />
+                <Upload className="h-5 w-5 mr-2 text-blue-600" />
                 {editingVideo ? 'Edit Video' : 'Upload New Video'}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={editingVideo ? handleUpdate : handleSubmit} className="space-y-4">
-                <div>
+                <div className="animate-fade-in">
                   <label className="block text-sm font-medium mb-2">Title *</label>
                   <Input
                     value={formData.title}
                     onChange={(e) => handleChange('title', e.target.value)}
                     placeholder="Enter video title"
                     required
+                    className="bg-white/50 dark:bg-slate-700/50"
                   />
                 </div>
 
-                <div>
+                <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
                   <label className="block text-sm font-medium mb-2">Category *</label>
                   <Select value={formData.category} onValueChange={(value: 'shorts' | 'full') => handleChange('category', value)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="bg-white/50 dark:bg-slate-700/50">
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
@@ -178,7 +278,7 @@ const Admin = () => {
                   </Select>
                 </div>
 
-                <div>
+                <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   <label className="block text-sm font-medium mb-2">Description *</label>
                   <Textarea
                     value={formData.description}
@@ -186,44 +286,50 @@ const Admin = () => {
                     placeholder="Enter video description"
                     rows={4}
                     required
+                    className="bg-white/50 dark:bg-slate-700/50"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2">Thumbnail URL</label>
-                  <Input
-                    value={formData.thumbnail}
-                    onChange={(e) => handleChange('thumbnail', e.target.value)}
-                    placeholder="Enter thumbnail image URL"
-                    type="url"
-                  />
-                </div>
+                {!editingVideo && (
+                  <>
+                    <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                      <label className="block text-sm font-medium mb-2">Video File *</label>
+                      <Input
+                        type="file"
+                        accept="video/*"
+                        onChange={(e) => setVideoFile(e.target.files?.[0] || null)}
+                        required
+                        className="bg-white/50 dark:bg-slate-700/50"
+                      />
+                    </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2">Video URL *</label>
-                  <Input
-                    value={formData.videoUrl}
-                    onChange={(e) => handleChange('videoUrl', e.target.value)}
-                    placeholder="Enter video file URL"
-                    type="url"
-                    required
-                  />
-                </div>
+                    <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                      <label className="block text-sm font-medium mb-2">Thumbnail (Optional)</label>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setThumbnailFile(e.target.files?.[0] || null)}
+                        className="bg-white/50 dark:bg-slate-700/50"
+                      />
+                    </div>
+                  </>
+                )}
 
-                <div>
+                <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
                   <label className="block text-sm font-medium mb-2">YouTube URL (Optional)</label>
                   <Input
                     value={formData.youtubeUrl}
                     onChange={(e) => handleChange('youtubeUrl', e.target.value)}
                     placeholder="Enter YouTube video URL"
                     type="url"
+                    className="bg-white/50 dark:bg-slate-700/50"
                   />
                 </div>
 
-                <div className="flex gap-2">
-                  <Button type="submit" className="flex-1">
+                <div className="flex gap-2 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+                  <Button type="submit" className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700" disabled={isUploading}>
                     <Save className="h-4 w-4 mr-2" />
-                    {editingVideo ? 'Update Video' : 'Upload Video'}
+                    {isUploading ? 'Uploading...' : editingVideo ? 'Update Video' : 'Upload Video'}
                   </Button>
                   {editingVideo && (
                     <Button
@@ -234,8 +340,6 @@ const Admin = () => {
                         setFormData({
                           title: "",
                           description: "",
-                          thumbnail: "",
-                          videoUrl: "",
                           youtubeUrl: "",
                           category: "full"
                         });
@@ -250,19 +354,22 @@ const Admin = () => {
           </Card>
 
           {/* Video List */}
-          <Card>
+          <Card className="animate-scale-in shadow-lg border-0 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm" style={{ animationDelay: '0.2s' }}>
             <CardHeader>
-              <CardTitle>Uploaded Videos ({videos.length})</CardTitle>
+              <CardTitle className="flex items-center">
+                <Video className="h-5 w-5 mr-2 text-blue-600" />
+                Uploaded Videos ({videos.length})
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4 max-h-96 overflow-y-auto">
                 {videos.length === 0 ? (
-                  <p className="text-muted-foreground text-center py-8">
+                  <p className="text-muted-foreground text-center py-8 animate-fade-in">
                     No videos uploaded yet. Upload your first video to get started!
                   </p>
                 ) : (
-                  videos.map((video) => (
-                    <div key={video.id} className="border rounded-lg p-4 space-y-2">
+                  videos.map((video, index) => (
+                    <div key={video.id} className="border rounded-lg p-4 space-y-2 bg-white/50 dark:bg-slate-700/50 animate-fade-in hover:shadow-md transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
                           <h3 className="font-semibold line-clamp-1">{video.title}</h3>
@@ -278,7 +385,7 @@ const Admin = () => {
                               {video.category === 'shorts' ? 'Short' : 'Full Video'}
                             </span>
                             <span className="text-xs text-muted-foreground">
-                              {new Date(video.createdAt).toLocaleDateString()}
+                              {new Date(video.created_at).toLocaleDateString()}
                             </span>
                           </div>
                         </div>
@@ -287,6 +394,7 @@ const Admin = () => {
                             size="sm"
                             variant="outline"
                             onClick={() => handleEdit(video)}
+                            className="hover:bg-blue-50 dark:hover:bg-blue-900/20"
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
@@ -294,6 +402,7 @@ const Admin = () => {
                             size="sm"
                             variant="destructive"
                             onClick={() => handleDelete(video.id)}
+                            className="hover:bg-red-600"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -308,7 +417,7 @@ const Admin = () => {
         </div>
 
         {/* Instructions */}
-        <Card className="mt-8">
+        <Card className="mt-8 animate-fade-in shadow-lg border-0 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm" style={{ animationDelay: '0.4s' }}>
           <CardHeader>
             <CardTitle>Instructions</CardTitle>
           </CardHeader>
@@ -318,19 +427,19 @@ const Admin = () => {
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Fill in the title and description for your dropshipping video</li>
                 <li>Select the category: "Shorts" for quick tips, "Full Videos" for detailed tutorials</li>
-                <li>Add a thumbnail image URL (optional but recommended for better engagement)</li>
-                <li>Provide the video file URL (hosted on your preferred platform)</li>
+                <li>Upload your video file directly from your device</li>
+                <li>Optionally upload a custom thumbnail image</li>
                 <li>Optionally add a YouTube URL to allow viewers to watch on YouTube</li>
-                <li>Click "Upload Video" and it will immediately appear on your website</li>
+                <li>Click "Upload Video" and it will be processed and appear on your website</li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-2">Video Management:</h4>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li>Edit any video by clicking the edit button - changes are reflected immediately</li>
-                <li>Delete videos that are no longer relevant to keep your content fresh</li>
-                <li>Videos appear on the homepage in chronological order (newest first)</li>
-                <li>Both video categories are displayed together but clearly labeled</li>
+                <li>Edit video details by clicking the edit button</li>
+                <li>Delete videos that are no longer relevant</li>
+                <li>Videos appear on the homepage organized by category</li>
+                <li>File uploads are securely stored and optimized for web delivery</li>
               </ul>
             </div>
           </CardContent>
