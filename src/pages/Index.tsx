@@ -102,7 +102,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 animate-pulse"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-slide-in-up leading-tight">Master Dropshipping with Academy </h1>
+            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-slide-in-up leading-tight">Master Dropshipping with Ganesh Academy </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-in-up" style={{
             animationDelay: '0.2s'
           }}>
