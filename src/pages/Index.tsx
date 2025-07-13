@@ -158,11 +158,7 @@ const Index = () => {
               <div className="space-y-8 animate-slide-in-left">
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-white">Empowering Entrepreneurs Worldwide</h3>
                 <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
-                  <p>
-                    Ganeshdrsr is dedicated to helping aspiring entrepreneurs succeed in dropshipping. 
-                    With years of experience and proven strategies, we provide comprehensive tutorials, 
-                    market insights, and practical tips that actually work.
-                  </p>
+                  <p>GaneshEXP is dedicated to helping aspiring entrepreneurs succeed in dropshipping. With years of experience and proven strategies, we provide comprehensive tutorials, market insights, and practical tips that actually work.</p>
                   <p>
                     Our mission is to democratize e-commerce education and make dropshipping accessible 
                     to everyone, regardless of their background or experience level. Join thousands of 
@@ -185,7 +181,7 @@ const Index = () => {
                     <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto shadow-2xl">
                       <span className="text-white text-4xl font-bold">G</span>
                     </div>
-                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white">Ganeshdrsr</h4>
+                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white">GaneshEXP</h4>
                     <p className="text-muted-foreground text-lg">Dropshipping Expert</p>
                   </div>
                 </div>
