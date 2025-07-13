@@ -26,7 +26,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
             <Youtube className="h-8 w-8 text-red-600" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">GaneshEXP</span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Dropshipping Academy</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
