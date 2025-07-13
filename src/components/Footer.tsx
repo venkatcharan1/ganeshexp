@@ -1,10 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { Youtube, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-muted/50 border-t">
+  return <footer className="bg-muted/50 border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -50,11 +47,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 Ganeshdrsr. All rights reserved. Built for dropshipping success.</p>
+          <p>© 2024 GaneshEXP. All rights reserved. Built for dropshipping success.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
