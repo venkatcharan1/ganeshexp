@@ -169,7 +169,16 @@ const Index = () => {
                     className="animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <VideoCard video={video} />
+                    <VideoCard 
+                      id={video.id}
+                      title={video.title}
+                      description={video.description || ''}
+                      thumbnail_url={video.thumbnail_url || undefined}
+                      video_file_path={video.video_file_path}
+                      youtube_url={video.youtube_url || undefined}
+                      category={video.category}
+                      index={index}
+                    />
                   </div>
                 ))}
               </div>
