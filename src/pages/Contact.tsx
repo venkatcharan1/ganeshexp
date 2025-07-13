@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -43,7 +42,7 @@ const Contact = () => {
               <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Have questions about dropshipping? Need help with your e-commerce journey? 
-                We're here to help you succeed in your online business venture.
+                We're here to help you succeed in building your profitable dropshipping business.
               </p>
             </div>
 
@@ -54,11 +53,12 @@ const Contact = () => {
                   <h2 className="text-2xl font-semibold mb-4">Send us a Message</h2>
                   <p className="text-muted-foreground mb-6">
                     Whether you're a beginner looking to start your dropshipping journey or an experienced entrepreneur 
-                    seeking advanced strategies, we're here to provide guidance and support.
+                    seeking advanced strategies, we're here to provide guidance and support for your dropshipping business.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -101,7 +101,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      placeholder="What's your message about?"
+                      placeholder="What's your dropshipping question about?"
                     />
                   </div>
 
@@ -116,7 +116,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      placeholder="Tell us about your dropshipping questions or how we can help you..."
+                      placeholder="Tell us about your dropshipping questions or how we can help you build your business..."
                     />
                   </div>
 
@@ -132,7 +132,7 @@ const Contact = () => {
                 <div>
                   <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
                   <p className="text-muted-foreground mb-6">
-                    Ready to transform your entrepreneurial dreams into reality? Connect with us through multiple channels 
+                    Ready to transform your entrepreneurial dreams into a successful dropshipping business? Connect with us 
                     and join our community of successful dropshipping entrepreneurs.
                   </p>
                 </div>
@@ -147,8 +147,8 @@ const Contact = () => {
                       <p className="text-muted-foreground mb-2">
                         Get detailed answers to your dropshipping questions
                       </p>
-                      <a href="mailto:support@ganeshdrsr.com" className="text-red-600 hover:text-red-700">
-                        support@ganeshdrsr.com
+                      <a href="mailto:telugudropshipper@gmail.com" className="text-red-600 hover:text-red-700">
+                        telugudropshipper@gmail.com
                       </a>
                     </div>
                   </div>
@@ -175,12 +175,12 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Business Address</h3>
                       <p className="text-muted-foreground mb-2">
-                        Visit us for in-person consultations and workshops
+                        Visit us for in-person dropshipping consultations and workshops
                       </p>
                       <address className="text-muted-foreground not-italic">
                         123 E-commerce Boulevard<br />
                         Digital Business District<br />
-                        Entrepreneurship City, EC 12345
+                        Dropshipping Hub, DH 12345
                       </address>
                     </div>
                   </div>
@@ -188,6 +188,7 @@ const Contact = () => {
 
                 <div className="bg-muted/50 rounded-lg p-6">
                   <h3 className="font-semibold mb-3">Dropshipping Support Hours</h3>
+                  
                   <div className="space-y-2 text-sm text-muted-foreground">
                     <div className="flex justify-between">
                       <span>Monday - Friday:</span>
@@ -208,7 +209,7 @@ const Contact = () => {
                   <h3 className="font-semibold mb-2">Quick Response Guarantee</h3>
                   <p className="text-sm text-muted-foreground">
                     We understand that timing is crucial in dropshipping. That's why we guarantee a response to all 
-                    inquiries within 24 hours during business days. For urgent matters, please mention "URGENT" in your subject line.
+                    inquiries within 24 hours during business days. For urgent dropshipping matters, please mention "URGENT" in your subject line.
                   </p>
                 </div>
               </div>
@@ -216,8 +217,9 @@ const Contact = () => {
 
             {/* FAQ Section */}
             <div className="mt-16">
-              <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Dropshipping Questions</h2>
               <div className="grid md:grid-cols-2 gap-8">
+                
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-semibold mb-2">How quickly can I start dropshipping?</h3>
