@@ -67,6 +67,13 @@ const Index = () => {
     setDisplayCount(prev => prev + 10);
   };
 
+  const scrollToVideos = () => {
+    const videosSection = document.getElementById('videos-section');
+    if (videosSection) {
+      videosSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 dark:from-slate-950 dark:via-blue-950 dark:to-slate-900">
       {/* Navigation */}
@@ -106,7 +113,11 @@ const Index = () => {
                 <Play className="mr-2 h-5 w-5" />
                 Start Learning Dropshipping
               </Button>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold">
+              <Button 
+                variant="outline" 
+                onClick={scrollToVideos}
+                className="border-white/30 text-white hover:bg-white/10 hover:text-white px-8 py-3 rounded-full text-lg font-semibold"
+              >
                 Watch Free Dropshipping Videos
               </Button>
             </div>
@@ -210,7 +221,7 @@ const Index = () => {
       </section>
 
       {/* Videos Section */}
-      <section className="py-12 px-4">
+      <section id="videos-section" className="py-12 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
