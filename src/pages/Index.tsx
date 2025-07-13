@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import VideoCard from "@/components/VideoCard";
 import Footer from "@/components/Footer";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Play, Users, Award, TrendingUp, BookOpen } from "lucide-react";
@@ -67,20 +68,23 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 dark:from-slate-950 dark:via-blue-950 dark:to-slate-900">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-white">
               Dropshipping Academy
             </div>
-            <div className="hidden md:flex space-x-6">
-              <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
-              <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
-              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
-              <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
+            <div className="flex items-center space-x-4">
+              <div className="hidden md:flex space-x-6">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
+                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
+                <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
+                <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
+                <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
+              </div>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -184,7 +188,7 @@ const Index = () => {
               <div className="flex space-x-1">
                 {[
                   { key: 'all', label: 'All Dropshipping Videos' },
-                  { key: 'shorts', label: 'Quick Tips' },
+                  { key: 'shorts', label: 'Shorts' },
                   { key: 'full', label: 'Complete Tutorials' }
                 ].map((category) => (
                   <button
