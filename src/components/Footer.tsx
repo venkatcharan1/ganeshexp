@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { Youtube, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+
 const Footer = () => {
-  return <footer className="bg-muted/50 border-t">
+  return (
+    <footer className="bg-muted/50 border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Youtube className="h-8 w-8 text-red-600" />
-              <span className="text-2xl font-bold">Ganeshdrsr</span>
+              <span className="text-2xl font-bold">GaneshEXP</span>
             </div>
             <p className="text-muted-foreground">
               Your ultimate guide to successful dropshipping. Learn strategies, tips, and techniques to build a profitable online business.
@@ -50,6 +52,8 @@ const Footer = () => {
           <p>© 2024 GaneshEXP. All rights reserved. Built for dropshipping success.</p>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
