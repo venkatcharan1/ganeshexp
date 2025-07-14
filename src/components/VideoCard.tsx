@@ -19,7 +19,7 @@ const VideoCard = ({ title, description, thumbnail_url, video_file_path, youtube
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <Card className="group hover:shadow-2xl transition-all duration-500 animate-fade-in hover:scale-105 transform perspective-1000 hover:rotate-y-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-lg overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
+    <Card className="group hover:shadow-2xl transition-all duration-500 animate-fade-in hover:scale-105 transform perspective-1000 hover:rotate-y-2 bg-slate-800/80 backdrop-blur-sm border-0 shadow-lg overflow-hidden border border-slate-700/50" style={{ animationDelay: `${index * 0.1}s` }}>
       <CardContent className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
           <img 
@@ -48,12 +48,12 @@ const VideoCard = ({ title, description, thumbnail_url, video_file_path, youtube
           </div>
         </div>
         
-        <div className="p-6 space-y-4 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900">
-          <h3 className="font-bold text-lg line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 animate-slide-in-right" style={{ animationDelay: `${index * 0.1 + 0.3}s` }}>
+        <div className="p-6 space-y-4 bg-gradient-to-b from-slate-800 to-slate-900">
+          <h3 className="font-bold text-lg line-clamp-2 text-white group-hover:text-blue-400 transition-colors duration-300 animate-slide-in-right" style={{ animationDelay: `${index * 0.1 + 0.3}s` }}>
             {title}
           </h3>
           
-          <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed animate-fade-in" style={{ animationDelay: `${index * 0.1 + 0.4}s` }}>
+          <p className="text-gray-300 text-sm line-clamp-3 leading-relaxed animate-fade-in" style={{ animationDelay: `${index * 0.1 + 0.4}s` }}>
             {description}
           </p>
           
@@ -72,7 +72,7 @@ const VideoCard = ({ title, description, thumbnail_url, video_file_path, youtube
                 variant="outline"
                 size="sm"
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="flex-1 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-105 bg-white/70 dark:bg-slate-700/70"
+                className="flex-1 hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-105 bg-slate-700/70 text-white border-slate-600"
               >
                 {isPlaying ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
                 {isPlaying ? 'Pause' : 'Play'}
@@ -83,7 +83,7 @@ const VideoCard = ({ title, description, thumbnail_url, video_file_path, youtube
                   variant="outline"
                   size="sm"
                   onClick={() => window.open(youtube_url, '_blank')}
-                  className="flex-1 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 hover:scale-105 bg-white/70 dark:bg-slate-700/70"
+                  className="flex-1 hover:bg-red-600 hover:text-white transition-all duration-300 hover:scale-105 bg-slate-700/70 text-white border-slate-600"
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
                   YouTube

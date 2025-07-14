@@ -240,21 +240,21 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-blue-950 dark:to-indigo-950 p-8 animate-fade-in">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-8 animate-fade-in">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8 animate-slide-in-right">
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-2 text-white">
             Admin Panel
           </h1>
-          <p className="text-muted-foreground">Manage your dropshipping video content</p>
+          <p className="text-gray-300">Manage your dropshipping video content</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Upload Form */}
-          <Card className="animate-scale-in shadow-lg border-0 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+          <Card className="animate-scale-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <Upload className="h-5 w-5 mr-2 text-blue-600" />
+              <CardTitle className="flex items-center text-white">
+                <Upload className="h-5 w-5 mr-2 text-blue-400" />
                 {editingVideo ? 'Edit Video' : 'Upload New Video'}
               </CardTitle>
             </CardHeader>
@@ -360,10 +360,10 @@ const Admin = () => {
           </Card>
 
           {/* Video List */}
-          <Card className="animate-scale-in shadow-lg border-0 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm" style={{ animationDelay: '0.2s' }}>
+          <Card className="animate-scale-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm" style={{ animationDelay: '0.2s' }}>
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <Video className="h-5 w-5 mr-2 text-blue-600" />
+              <CardTitle className="flex items-center text-white">
+                <Video className="h-5 w-5 mr-2 text-blue-400" />
                 Uploaded Videos ({videos.length})
               </CardTitle>
             </CardHeader>
@@ -423,9 +423,9 @@ const Admin = () => {
         </div>
 
         {/* Instructions */}
-        <Card className="mt-8 animate-fade-in shadow-lg border-0 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm" style={{ animationDelay: '0.4s' }}>
+        <Card className="mt-8 animate-fade-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm" style={{ animationDelay: '0.4s' }}>
           <CardHeader>
-            <CardTitle>Instructions</CardTitle>
+            <CardTitle className="text-white">Instructions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>

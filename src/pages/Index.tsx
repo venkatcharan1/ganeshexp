@@ -5,7 +5,7 @@ import VideoCard from "@/components/VideoCard";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Play, Users, Award, TrendingUp, BookOpen } from "lucide-react";
+import { Play, Users, Award, TrendingUp, BookOpen, Youtube, Menu, X } from "lucide-react";
 
 interface Video {
   id: string;
@@ -79,8 +79,9 @@ const Index = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl md:text-2xl font-bold text-white">
-              Dropshipping Academy
+            <div className="flex items-center space-x-2 text-xl md:text-2xl font-bold text-white">
+              <Youtube className="h-6 md:h-8 w-6 md:w-8 text-red-600" />
+              <span>Dropshipping Academy</span>
             </div>
             <div className="hidden md:flex space-x-4 lg:space-x-6">
               <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Home</Link>
@@ -92,8 +93,10 @@ const Index = () => {
             {/* Mobile Menu */}
             <div className="md:hidden">
               <details className="dropdown">
-                <summary className="text-white cursor-pointer">☰</summary>
-                <div className="absolute right-4 top-16 bg-slate-900 rounded-lg p-4 space-y-2 border border-white/10">
+                <summary className="text-white cursor-pointer list-none">
+                  <Menu className="h-6 w-6" />
+                </summary>
+                <div className="absolute right-4 top-16 bg-slate-900 rounded-lg p-4 space-y-2 border border-white/10 z-50">
                   <Link to="/" className="block text-gray-300 hover:text-white transition-colors">Home</Link>
                   <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</Link>
                   <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
@@ -128,7 +131,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 onClick={scrollToVideos}
-                className="border-white/30 text-white hover:bg-white/10 hover:text-white px-6 md:px-8 py-3 rounded-full text-base md:text-lg font-semibold"
+                className="border-blue-400/50 text-blue-300 bg-blue-950/30 hover:bg-blue-600 hover:text-white hover:border-blue-500 px-6 md:px-8 py-3 rounded-full text-base md:text-lg font-semibold transition-all duration-300"
               >
                 Watch Free Dropshipping Videos
               </Button>
