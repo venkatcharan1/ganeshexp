@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import VideoCard from "@/components/VideoCard";
 import Footer from "@/components/Footer";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Play, Users, Award, TrendingUp, BookOpen } from "lucide-react";
@@ -75,23 +74,33 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 dark:from-slate-950 dark:via-blue-950 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-white">
+            <div className="text-xl md:text-2xl font-bold text-white">
               Dropshipping Academy
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex space-x-6">
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
-                <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
-                <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
-                <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
-              </div>
-              <ThemeToggle />
+            <div className="hidden md:flex space-x-4 lg:space-x-6">
+              <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Home</Link>
+              <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Contact</Link>
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Privacy Policy</Link>
+              <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Terms & Conditions</Link>
+              <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Disclaimer</Link>
+            </div>
+            {/* Mobile Menu */}
+            <div className="md:hidden">
+              <details className="dropdown">
+                <summary className="text-white cursor-pointer">☰</summary>
+                <div className="absolute right-4 top-16 bg-slate-900 rounded-lg p-4 space-y-2 border border-white/10">
+                  <Link to="/" className="block text-gray-300 hover:text-white transition-colors">Home</Link>
+                  <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</Link>
+                  <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
+                  <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
+                  <Link to="/disclaimer" className="block text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
+                </div>
+              </details>
             </div>
           </div>
         </div>
@@ -109,14 +118,17 @@ const Index = () => {
               Learn everything about dropshipping from product research to scaling your business. Free comprehensive course available here with step-by-step tutorials, proven strategies, and real case studies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300">
-                <Play className="mr-2 h-5 w-5" />
+              <Button 
+                onClick={scrollToVideos}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 md:px-8 py-3 rounded-full text-base md:text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+              >
+                <Play className="mr-2 h-4 md:h-5 w-4 md:w-5" />
                 Start Learning Dropshipping
               </Button>
               <Button 
                 variant="outline" 
                 onClick={scrollToVideos}
-                className="border-white/30 text-white hover:bg-white/10 hover:text-white px-8 py-3 rounded-full text-lg font-semibold"
+                className="border-white/30 text-white hover:bg-white/10 hover:text-white px-6 md:px-8 py-3 rounded-full text-base md:text-lg font-semibold"
               >
                 Watch Free Dropshipping Videos
               </Button>
@@ -124,7 +136,7 @@ const Index = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16">
             <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
                 <BookOpen className="h-12 w-12 text-blue-400 mx-auto mb-4" />
@@ -162,7 +174,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
               <h3 className="text-xl font-bold text-white mb-3">Product Research Mastery</h3>
               <p className="text-gray-300">Learn advanced techniques to find winning products using proven research methods and tools. Discover trending niches and validate product demand before investing.</p>
@@ -238,7 +250,7 @@ const Index = () => {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                 {displayedVideos.map((video, index) => (
                   <div
                     key={video.id}

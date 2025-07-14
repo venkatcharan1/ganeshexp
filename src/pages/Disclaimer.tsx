@@ -1,27 +1,36 @@
 
 import Footer from "@/components/Footer";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Link } from "react-router-dom";
 
 const Disclaimer = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 dark:from-slate-950 dark:via-blue-950 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-white">
+            <div className="text-xl md:text-2xl font-bold text-white">
               Dropshipping Academy
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex space-x-6">
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
-                <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
-                <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
-                <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
-              </div>
-              <ThemeToggle />
+            <div className="hidden md:flex space-x-4 lg:space-x-6">
+              <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Home</Link>
+              <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Contact</Link>
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Privacy Policy</Link>
+              <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Terms & Conditions</Link>
+              <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Disclaimer</Link>
+            </div>
+            {/* Mobile Menu */}
+            <div className="md:hidden">
+              <details className="dropdown">
+                <summary className="text-white cursor-pointer">☰</summary>
+                <div className="absolute right-4 top-16 bg-slate-900 rounded-lg p-4 space-y-2 border border-white/10">
+                  <Link to="/" className="block text-gray-300 hover:text-white transition-colors">Home</Link>
+                  <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</Link>
+                  <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
+                  <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
+                  <Link to="/disclaimer" className="block text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
+                </div>
+              </details>
             </div>
           </div>
         </div>
@@ -30,11 +39,11 @@ const Disclaimer = () => {
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="animate-fade-in">
-            <h1 className="text-4xl font-bold mb-8 text-center text-white">Disclaimer</h1>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 space-y-6">
+            <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">Disclaimer</h1>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 space-y-6">
               
               <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-white">Educational Purpose Only</h2>
+                <h2 className="text-xl md:text-2xl font-semibold text-white">Educational Purpose Only</h2>
                 <p className="text-gray-300 leading-relaxed">
                   The information provided on Dropshipping Academy's educational website is for general informational and educational purposes only. 
                   Our content, including videos, tutorials, and written materials, should not be considered as professional business advice, 
