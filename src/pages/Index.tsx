@@ -324,7 +324,7 @@ const Index = () => {
               Join thousands of successful entrepreneurs who have built profitable dropshipping businesses with our proven strategies and comprehensive training materials.
             </p>
             <div className="flex justify-center px-1 sm:px-2">
-              <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 md:py-6 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-semibold transform hover:scale-105 transition-all duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-center">
+              <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 md:py-6 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold transform hover:scale-105 transition-all duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-center">
                 Start Your Dropshipping Business Today
               </Button>
             </div>
