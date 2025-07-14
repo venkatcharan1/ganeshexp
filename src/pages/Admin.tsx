@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -240,100 +241,100 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-8 animate-fade-in">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-2 sm:p-4 md:p-8 animate-fade-in">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-8 animate-slide-in-right">
-          <h1 className="text-4xl font-bold mb-2 text-white">
+        <div className="mb-6 sm:mb-8 animate-slide-in-right">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-white">
             Admin Panel
           </h1>
-          <p className="text-gray-300">Manage your dropshipping video content</p>
+          <p className="text-gray-300 text-sm sm:text-base">Manage your dropshipping video content</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {/* Upload Form */}
           <Card className="animate-scale-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="flex items-center text-white">
-                <Upload className="h-5 w-5 mr-2 text-blue-400" />
+              <CardTitle className="flex items-center text-white text-lg sm:text-xl">
+                <Upload className="h-4 sm:h-5 w-4 sm:w-5 mr-2 text-blue-400" />
                 {editingVideo ? 'Edit Video' : 'Upload New Video'}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={editingVideo ? handleUpdate : handleSubmit} className="space-y-4">
+              <form onSubmit={editingVideo ? handleUpdate : handleSubmit} className="space-y-3 sm:space-y-4">
                 <div className="animate-fade-in">
-                  <label className="block text-sm font-medium mb-2">Title *</label>
+                  <label className="block text-sm font-medium mb-2 text-white">Title *</label>
                   <Input
                     value={formData.title}
                     onChange={(e) => handleChange('title', e.target.value)}
                     placeholder="Enter video title"
                     required
-                    className="bg-white/50 dark:bg-slate-700/50"
+                    className="bg-slate-700/70 border-slate-600 text-white placeholder:text-gray-400"
                   />
                 </div>
 
                 <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                  <label className="block text-sm font-medium mb-2">Category *</label>
+                  <label className="block text-sm font-medium mb-2 text-white">Category *</label>
                   <Select value={formData.category} onValueChange={(value: 'shorts' | 'full') => handleChange('category', value)}>
-                    <SelectTrigger className="bg-white/50 dark:bg-slate-700/50">
+                    <SelectTrigger className="bg-slate-700/70 border-slate-600 text-white">
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="shorts">Shorts</SelectItem>
-                      <SelectItem value="full">Full Videos</SelectItem>
+                    <SelectContent className="bg-slate-800 border-slate-600">
+                      <SelectItem value="shorts" className="text-white hover:bg-slate-700">Shorts</SelectItem>
+                      <SelectItem value="full" className="text-white hover:bg-slate-700">Full Videos</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                  <label className="block text-sm font-medium mb-2">Description *</label>
+                  <label className="block text-sm font-medium mb-2 text-white">Description *</label>
                   <Textarea
                     value={formData.description}
                     onChange={(e) => handleChange('description', e.target.value)}
                     placeholder="Enter video description"
                     rows={4}
                     required
-                    className="bg-white/50 dark:bg-slate-700/50"
+                    className="bg-slate-700/70 border-slate-600 text-white placeholder:text-gray-400"
                   />
                 </div>
 
                 {!editingVideo && (
                   <>
                     <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                      <label className="block text-sm font-medium mb-2">Video File *</label>
+                      <label className="block text-sm font-medium mb-2 text-white">Video File *</label>
                       <Input
                         type="file"
                         accept="video/*"
                         onChange={(e) => setVideoFile(e.target.files?.[0] || null)}
                         required
-                        className="bg-white/50 dark:bg-slate-700/50"
+                        className="bg-slate-700/70 border-slate-600 text-white file:text-white file:bg-slate-600"
                       />
                     </div>
 
                     <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                      <label className="block text-sm font-medium mb-2">Thumbnail (Optional)</label>
+                      <label className="block text-sm font-medium mb-2 text-white">Thumbnail (Optional)</label>
                       <Input
                         type="file"
                         accept="image/*"
                         onChange={(e) => setThumbnailFile(e.target.files?.[0] || null)}
-                        className="bg-white/50 dark:bg-slate-700/50"
+                        className="bg-slate-700/70 border-slate-600 text-white file:text-white file:bg-slate-600"
                       />
                     </div>
                   </>
                 )}
 
                 <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                  <label className="block text-sm font-medium mb-2">YouTube URL (Optional)</label>
+                  <label className="block text-sm font-medium mb-2 text-white">YouTube URL (Optional)</label>
                   <Input
                     value={formData.youtubeUrl}
                     onChange={(e) => handleChange('youtubeUrl', e.target.value)}
                     placeholder="Enter YouTube video URL"
                     type="url"
-                    className="bg-white/50 dark:bg-slate-700/50"
+                    className="bg-slate-700/70 border-slate-600 text-white placeholder:text-gray-400"
                   />
                 </div>
 
                 <div className="flex gap-2 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                  <Button type="submit" className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700" disabled={isUploading}>
+                  <Button type="submit" className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white" disabled={isUploading}>
                     <Save className="h-4 w-4 mr-2" />
                     {isUploading ? 'Uploading...' : editingVideo ? 'Update Video' : 'Upload Video'}
                   </Button>
@@ -341,6 +342,7 @@ const Admin = () => {
                     <Button
                       type="button"
                       variant="outline"
+                      className="border-slate-600 text-white hover:bg-slate-700"
                       onClick={() => {
                         setEditingVideo(null);
                         setFormData({
@@ -362,55 +364,55 @@ const Admin = () => {
           {/* Video List */}
           <Card className="animate-scale-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm" style={{ animationDelay: '0.2s' }}>
             <CardHeader>
-              <CardTitle className="flex items-center text-white">
-                <Video className="h-5 w-5 mr-2 text-blue-400" />
+              <CardTitle className="flex items-center text-white text-lg sm:text-xl">
+                <Video className="h-4 sm:h-5 w-4 sm:w-5 mr-2 text-blue-400" />
                 Uploaded Videos ({videos.length})
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4 max-h-96 overflow-y-auto">
+              <div className="space-y-3 sm:space-y-4 max-h-96 overflow-y-auto">
                 {videos.length === 0 ? (
-                  <p className="text-muted-foreground text-center py-8 animate-fade-in">
+                  <p className="text-gray-400 text-center py-6 sm:py-8 animate-fade-in text-sm sm:text-base">
                     No videos uploaded yet. Upload your first video to get started!
                   </p>
                 ) : (
                   videos.map((video, index) => (
-                    <div key={video.id} className="border rounded-lg p-4 space-y-2 bg-white/50 dark:bg-slate-700/50 animate-fade-in hover:shadow-md transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <div key={video.id} className="border border-slate-600 rounded-lg p-3 sm:p-4 space-y-2 bg-slate-700/50 animate-fade-in hover:shadow-md transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                       <div className="flex justify-between items-start">
-                        <div className="flex-1">
-                          <h3 className="font-semibold line-clamp-1">{video.title}</h3>
-                          <p className="text-sm text-muted-foreground line-clamp-2">
+                        <div className="flex-1 pr-2">
+                          <h3 className="font-semibold line-clamp-1 text-white text-sm sm:text-base">{video.title}</h3>
+                          <p className="text-xs sm:text-sm text-gray-300 line-clamp-2">
                             {video.description}
                           </p>
-                          <div className="flex items-center gap-2 mt-2">
+                          <div className="flex items-center gap-2 mt-2 flex-wrap">
                             <span className={`px-2 py-1 text-xs rounded ${
                               video.category === 'shorts' 
-                                ? 'bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400' 
-                                : 'bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400'
+                                ? 'bg-red-600/80 text-white' 
+                                : 'bg-blue-600/80 text-white'
                             }`}>
                               {video.category === 'shorts' ? 'Short' : 'Full Video'}
                             </span>
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-xs text-gray-400">
                               {new Date(video.created_at).toLocaleDateString()}
                             </span>
                           </div>
                         </div>
-                        <div className="flex gap-2 ml-4">
+                        <div className="flex gap-1 sm:gap-2 ml-2">
                           <Button
                             size="sm"
                             variant="outline"
                             onClick={() => handleEdit(video)}
-                            className="hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                            className="hover:bg-blue-600/20 border-slate-600 text-white p-1 sm:p-2"
                           >
-                            <Edit className="h-4 w-4" />
+                            <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
                           </Button>
                           <Button
                             size="sm"
                             variant="destructive"
                             onClick={() => handleDelete(video.id)}
-                            className="hover:bg-red-600"
+                            className="hover:bg-red-600 p-1 sm:p-2"
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                           </Button>
                         </div>
                       </div>
@@ -423,14 +425,14 @@ const Admin = () => {
         </div>
 
         {/* Instructions */}
-        <Card className="mt-8 animate-fade-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm" style={{ animationDelay: '0.4s' }}>
+        <Card className="mt-6 sm:mt-8 animate-fade-in shadow-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm" style={{ animationDelay: '0.4s' }}>
           <CardHeader>
-            <CardTitle className="text-white">Instructions</CardTitle>
+            <CardTitle className="text-white text-lg sm:text-xl">Instructions</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4">
             <div>
-              <h4 className="font-semibold mb-2">How to Upload Videos:</h4>
-              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-2 text-white text-sm sm:text-base">How to Upload Videos:</h4>
+              <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-gray-300">
                 <li>Fill in the title and description for your dropshipping video</li>
                 <li>Select the category: "Shorts" for quick tips, "Full Videos" for detailed tutorials</li>
                 <li>Upload your video file directly from your device</li>
@@ -440,8 +442,8 @@ const Admin = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-2">Video Management:</h4>
-              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-2 text-white text-sm sm:text-base">Video Management:</h4>
+              <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-gray-300">
                 <li>Edit video details by clicking the edit button</li>
                 <li>Delete videos that are no longer relevant</li>
                 <li>Videos appear on the homepage organized by category</li>

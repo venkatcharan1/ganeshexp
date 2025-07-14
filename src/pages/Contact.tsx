@@ -1,21 +1,20 @@
 
 import Footer from "@/components/Footer";
-import { Mail, Youtube, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Youtube, Menu, Mail } from "lucide-react";
 
 const Contact = () => {
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 text-xl md:text-2xl font-bold text-white">
-              <Youtube className="h-6 md:h-8 w-6 md:w-8 text-red-600" />
-              <span>Dropshipping Academy</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 text-base sm:text-xl md:text-2xl font-bold text-white">
+              <Youtube className="h-5 sm:h-6 md:h-8 w-5 sm:w-6 md:w-8 text-red-600" />
+              <span className="text-sm sm:text-base md:text-xl lg:text-2xl">Dropshipping Academy</span>
             </div>
-            <div className="hidden md:flex space-x-4 lg:space-x-6">
+            <div className="hidden md:flex space-x-3 lg:space-x-6">
               <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Home</Link>
               <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Contact</Link>
               <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Privacy Policy</Link>
@@ -26,14 +25,14 @@ const Contact = () => {
             <div className="md:hidden">
               <details className="dropdown">
                 <summary className="text-white cursor-pointer list-none">
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
                 </summary>
-                <div className="absolute right-4 top-16 bg-slate-900 rounded-lg p-4 space-y-2 border border-white/10">
-                  <Link to="/" className="block text-gray-300 hover:text-white transition-colors">Home</Link>
-                  <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">Contact</Link>
-                  <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
-                  <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors">Terms & Conditions</Link>
-                  <Link to="/disclaimer" className="block text-gray-300 hover:text-white transition-colors">Disclaimer</Link>
+                <div className="absolute right-2 sm:right-4 top-12 sm:top-16 bg-slate-900 rounded-lg p-3 sm:p-4 space-y-2 border border-white/10 z-50 min-w-[200px]">
+                  <Link to="/" className="block text-gray-300 hover:text-white transition-colors text-sm">Home</Link>
+                  <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors text-sm">Contact</Link>
+                  <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</Link>
+                  <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors text-sm">Terms & Conditions</Link>
+                  <Link to="/disclaimer" className="block text-gray-300 hover:text-white transition-colors text-sm">Disclaimer</Link>
                 </div>
               </details>
             </div>
@@ -41,43 +40,36 @@ const Contact = () => {
         </div>
       </nav>
 
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="animate-fade-in">
-            <div className="text-center mb-12">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">Contact Us</h1>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                Have questions about dropshipping? Need help with your e-commerce journey? 
-                We're here to help you succeed in building your profitable dropshipping business.
-              </p>
+      <main className="pt-20 sm:pt-24 pb-12 sm:pb-16">
+        <div className="container mx-auto px-2 sm:px-4 max-w-4xl">
+          <div className="animate-fade-in text-center">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-white">Contact Us</h1>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/10 max-w-2xl mx-auto">
+              <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+                <Mail className="h-12 w-12 sm:h-16 sm:w-16 text-blue-400" />
+                <div className="text-center">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">Get in Touch</h2>
+                  <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 sm:mb-6">
+                    Have questions about dropshipping? Need help with our tutorials? We're here to help!
+                  </p>
+                  <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
+                    <p className="text-gray-300 text-sm sm:text-base mb-2">Send us an email at:</p>
+                    <a 
+                      href="mailto:telugudropshipper@gmail.com"
+                      className="text-lg sm:text-xl md:text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors break-all"
+                    >
+                      telugudropshipper@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Email Contact Only */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 text-center">
-              <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Mail className="h-8 w-8 text-blue-400" />
-              </div>
-              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Get in Touch</h2>
-              <p className="text-gray-300 mb-6 text-sm md:text-base">
-                For all inquiries about our dropshipping courses, business guidance, and support, 
-                reach out to us directly via email:
+            <div className="mt-8 sm:mt-12 text-center">
+              <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto px-2">
+                We typically respond within 24-48 hours. For the fastest response, please include as much detail as possible about your question or issue.
               </p>
-              <div className="bg-blue-600/20 rounded-lg p-4 md:p-6 mb-6">
-                <a 
-                  href="mailto:telugudropshipper@gmail.com" 
-                  className="text-blue-400 hover:text-blue-300 text-lg md:text-xl font-medium transition-colors break-all"
-                >
-                  telugudropshipper@gmail.com
-                </a>
-              </div>
-              <div className="space-y-3 text-gray-300 text-sm md:text-base">
-                <p>
-                  <strong className="text-white">Response Time:</strong> We typically respond within 24 hours during business days
-                </p>
-                <p>
-                  <strong className="text-white">What we help with:</strong> Product research, store setup, marketing strategies, supplier management, and scaling your dropshipping business
-                </p>
-              </div>
             </div>
           </div>
         </div>
