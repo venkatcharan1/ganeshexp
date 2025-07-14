@@ -51,7 +51,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-gray-300">
-          <p className="text-sm md:text-base">© 2024 Dropshipping Academy. All rights reserved. Built for dropshipping success and e-commerce education.</p>
+          <p className="text-sm md:text-base">© 2025 Dropshipping Academy. All rights reserved. Built for dropshipping success and e-commerce education.</p>
         </div>
       </div>
     </footer>

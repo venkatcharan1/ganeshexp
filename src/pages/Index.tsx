@@ -80,8 +80,8 @@ const Index = () => {
         <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-3 md:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-1 sm:space-x-2 text-base sm:text-xl md:text-2xl font-bold text-white">
-              <Youtube className="h-6 sm:h-7 md:h-8 lg:h-10 w-6 sm:w-7 md:w-8 lg:w-10 text-red-600" />
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">Dropshipping Academy</span>
+              <Youtube className="h-7 sm:h-8 md:h-9 lg:h-10 xl:h-12 w-7 sm:w-8 md:w-9 lg:w-10 xl:w-12 text-red-600" />
+              <span className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Dropshipping Academy</span>
             </div>
             <div className="hidden md:flex space-x-3 lg:space-x-6">
               <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Home</Link>
@@ -110,28 +110,28 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-16 px-2 sm:px-4">
+      <section className="relative overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12 md:pb-16 px-2 sm:px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
         <div className="relative container mx-auto text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-white mb-4 sm:mb-5 md:mb-7 leading-tight px-1 sm:px-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-5 sm:mb-6 md:mb-7 leading-tight px-1 sm:px-2">
               Complete <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dropshipping</span> Course
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-5 sm:mb-7 md:mb-9 max-w-3xl mx-auto px-1 sm:px-2">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto px-1 sm:px-2">
               Learn everything about dropshipping from product research to scaling your business. Free comprehensive course available here with step-by-step tutorials, proven strategies, and real case studies.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center items-center mb-7 sm:mb-9 md:mb-13 px-1 sm:px-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center items-center mb-8 sm:mb-10 md:mb-14 px-1 sm:px-2">
               <Button 
                 onClick={scrollToVideos}
-                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-5 md:px-7 lg:px-9 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold transform hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-5 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-semibold transform hover:scale-105 transition-all duration-300"
               >
-                <Play className="mr-2 h-4 sm:h-5 md:h-6 w-4 sm:w-5 md:w-6" />
+                <Play className="mr-2 h-5 sm:h-6 md:h-7 w-5 sm:w-6 md:w-7" />
                 Start Learning Dropshipping
               </Button>
               <Button 
                 variant="outline" 
                 onClick={scrollToVideos}
-                className="w-full sm:w-auto border-blue-400 text-blue-300 bg-blue-600/30 hover:bg-blue-600 hover:text-white hover:border-blue-500 px-4 sm:px-5 md:px-7 lg:px-9 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold transition-all duration-300"
+                className="w-full sm:w-auto border-blue-400 text-blue-300 bg-blue-600/30 hover:bg-blue-600 hover:text-white hover:border-blue-500 px-5 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-semibold transition-all duration-300"
               >
                 Watch Free Dropshipping Videos
               </Button>
@@ -139,26 +139,26 @@ const Index = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-7 lg:gap-9 mt-7 sm:mt-9 md:mt-13 lg:mt-17 px-1 sm:px-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 lg:gap-10 mt-8 sm:mt-10 md:mt-14 lg:mt-18 px-1 sm:px-2">
             <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <BookOpen className="h-10 sm:h-12 md:h-14 w-10 sm:w-12 md:w-14 text-blue-400 mx-auto mb-3 sm:mb-5" />
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">Free Dropshipping Course</h3>
-                <p className="text-sm sm:text-base md:text-lg text-gray-300">Complete dropshipping training from beginner to advanced level</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                <BookOpen className="h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 text-blue-400 mx-auto mb-4 sm:mb-6" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Free Dropshipping Course</h3>
+                <p className="text-base sm:text-lg md:text-xl text-gray-300">Complete dropshipping training from beginner to advanced level</p>
               </div>
             </div>
             <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <TrendingUp className="h-10 sm:h-12 md:h-14 w-10 sm:w-12 md:w-14 text-green-400 mx-auto mb-3 sm:mb-5" />
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">Proven Dropshipping Strategies</h3>
-                <p className="text-sm sm:text-base md:text-lg text-gray-300">Learn winning product research, store setup, and marketing techniques</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                <TrendingUp className="h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 text-green-400 mx-auto mb-4 sm:mb-6" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Proven Dropshipping Strategies</h3>
+                <p className="text-base sm:text-lg md:text-xl text-gray-300">Learn winning product research, store setup, and marketing techniques</p>
               </div>
             </div>
             <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <Award className="h-10 sm:h-12 md:h-14 w-10 sm:w-12 md:w-14 text-yellow-400 mx-auto mb-3 sm:mb-5" />
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">Expert Dropshipping Guidance</h3>
-                <p className="text-sm sm:text-base md:text-lg text-gray-300">Step-by-step tutorials for successful dropshipping business</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                <Award className="h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 text-yellow-400 mx-auto mb-4 sm:mb-6" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Expert Dropshipping Guidance</h3>
+                <p className="text-base sm:text-lg md:text-xl text-gray-300">Step-by-step tutorials for successful dropshipping business</p>
               </div>
             </div>
           </div>
@@ -166,54 +166,54 @@ const Index = () => {
       </section>
 
       {/* Dropshipping Course Benefits Section */}
-      <section className="py-9 sm:py-13 md:py-17 px-2 sm:px-4">
+      <section className="py-10 sm:py-14 md:py-18 px-2 sm:px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-7 sm:mb-9 md:mb-13">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-5 px-1 sm:px-2">
+          <div className="text-center mb-8 sm:mb-10 md:mb-14">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 px-1 sm:px-2">
               Why Choose Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dropshipping Course</span>
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto px-1 sm:px-2">
+            <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto px-1 sm:px-2">
               Our comprehensive dropshipping course covers everything you need to know to build a profitable online business. From finding winning products to scaling your store, we provide practical strategies that work in today's competitive e-commerce landscape.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-7 lg:gap-9 px-1 sm:px-2">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">Product Research Mastery</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-300">Learn advanced techniques to find winning products using proven research methods and tools. Discover trending niches and validate product demand before investing.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 lg:gap-10 px-1 sm:px-2">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5">Product Research Mastery</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300">Learn advanced techniques to find winning products using proven research methods and tools. Discover trending niches and validate product demand before investing.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">Store Setup & Design</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-300">Build professional-looking dropshipping stores that convert visitors into customers. Learn about themes, page optimization, and user experience best practices.</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5">Store Setup & Design</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300">Build professional-looking dropshipping stores that convert visitors into customers. Learn about themes, page optimization, and user experience best practices.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">Marketing & Advertising</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-300">Master Facebook ads, Google ads, and organic marketing strategies. Learn how to create compelling ad creatives and optimize your campaigns for maximum ROI.</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5">Marketing & Advertising</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300">Master Facebook ads, Google ads, and organic marketing strategies. Learn how to create compelling ad creatives and optimize your campaigns for maximum ROI.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">Supplier Management</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-300">Find reliable suppliers, negotiate better prices, and establish strong relationships. Learn about quality control and shipping optimization strategies.</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5">Supplier Management</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300">Find reliable suppliers, negotiate better prices, and establish strong relationships. Learn about quality control and shipping optimization strategies.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">Customer Service Excellence</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-300">Provide outstanding customer support to build trust and increase repeat sales. Handle returns, refunds, and customer inquiries professionally.</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5">Customer Service Excellence</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300">Provide outstanding customer support to build trust and increase repeat sales. Handle returns, refunds, and customer inquiries professionally.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-7 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">Scaling & Automation</h3>
-              <p className="text-sm sm:text-base md:text-lg text-gray-300">Scale your dropshipping business efficiently using automation tools and proven systems. Learn how to manage multiple products and increase profit margins.</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:bg-white/20 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5">Scaling & Automation</h3>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300">Scale your dropshipping business efficiently using automation tools and proven systems. Learn how to manage multiple products and increase profit margins.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Video Categories Filter */}
-      <section className="py-5 sm:py-7 md:py-9 px-2 sm:px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="flex flex-col items-center space-y-5 sm:space-y-7">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center">
+      <section className="py-6 sm:py-8 md:py-10 px-2 sm:px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col items-center space-y-6 sm:space-y-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center">
               Choose Your Learning Path
             </h3>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-4xl">
               {[
                 { key: 'all', label: 'All Dropshipping Videos', icon: BookOpen, count: videos.length },
                 { key: 'shorts', label: 'Shorts', icon: Play, count: videos.filter(v => v.category === 'shorts').length },
@@ -222,30 +222,30 @@ const Index = () => {
                 const IconComponent = category.icon;
                 const isActive = activeCategory === category.key;
                 return (
-                  <button
+                  <div
                     key={category.key}
                     onClick={() => setActiveCategory(category.key as 'all' | 'shorts' | 'full')}
-                    className={`group relative flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105 ${
+                    className={`group relative cursor-pointer p-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                       isActive
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl shadow-blue-500/25 border-2 border-blue-400/50'
-                        : 'bg-slate-800/60 backdrop-blur-sm text-gray-300 hover:bg-slate-700/70 hover:text-white border-2 border-slate-700/50 hover:border-slate-600/50'
+                        ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-500/30 border-2 border-blue-400/50'
+                        : 'bg-slate-800/70 backdrop-blur-sm text-gray-300 hover:bg-slate-700/80 hover:text-white border-2 border-slate-700/50 hover:border-slate-600/50'
                     }`}
                   >
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
-                      <IconComponent className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}`} />
-                      <span className="whitespace-nowrap">{category.label}</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
+                    <div className="flex flex-col items-center space-y-3">
+                      <IconComponent className={`h-8 w-8 ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}`} />
+                      <span className="text-center font-medium">{category.label}</span>
+                      <div className={`px-3 py-1 rounded-full text-sm font-medium ${
                         isActive 
                           ? 'bg-white/20 text-white' 
                           : 'bg-slate-700/50 text-gray-400 group-hover:bg-slate-600/50 group-hover:text-gray-300'
                       }`}>
-                        {category.count}
-                      </span>
+                        {category.count} videos
+                      </div>
                     </div>
                     {isActive && (
-                      <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 animate-pulse" />
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 animate-pulse" />
                     )}
-                  </button>
+                  </div>
                 );
               })}
             </div>
@@ -254,20 +254,20 @@ const Index = () => {
       </section>
 
       {/* Videos Section */}
-      <section id="videos-section" className="py-7 sm:py-9 md:py-13 px-2 sm:px-4">
+      <section id="videos-section" className="py-8 sm:py-10 md:py-14 px-2 sm:px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-7 sm:mb-9 md:mb-13">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-5 px-1 sm:px-2">
+          <div className="text-center mb-8 sm:mb-10 md:mb-14">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 px-1 sm:px-2">
               Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dropshipping Videos</span>
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl px-1 sm:px-2">
+            <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl px-1 sm:px-2">
               Learn from our comprehensive dropshipping tutorials and grow your e-commerce business with proven strategies
             </p>
           </div>
 
           {loading ? (
-            <div className="flex justify-center items-center py-13 sm:py-17 md:py-21">
-              <div className="animate-spin rounded-full h-9 sm:h-11 md:h-13 w-9 sm:w-11 md:w-13 border-b-2 border-blue-400"></div>
+            <div className="flex justify-center items-center py-14 sm:py-18 md:py-22">
+              <div className="animate-spin rounded-full h-10 sm:h-12 md:h-14 w-10 sm:w-12 md:w-14 border-b-2 border-blue-400"></div>
             </div>
           ) : (
             <>
@@ -293,10 +293,10 @@ const Index = () => {
               </div>
 
               {displayedVideos.length < filteredVideos.length && (
-                <div className="text-center mt-7 sm:mt-9 md:mt-13 px-1 sm:px-2">
+                <div className="text-center mt-8 sm:mt-10 md:mt-14 px-1 sm:px-2">
                   <Button
                     onClick={loadMore}
-                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-5 sm:px-7 md:px-9 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold transform hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-semibold transform hover:scale-105 transition-all duration-300"
                   >
                     Load More Dropshipping Videos
                   </Button>
@@ -304,8 +304,8 @@ const Index = () => {
               )}
 
               {filteredVideos.length === 0 && (
-                <div className="text-center py-13 sm:py-17 md:py-21">
-                  <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl px-1 sm:px-2">No dropshipping videos available in this category yet.</p>
+                <div className="text-center py-14 sm:py-18 md:py-22">
+                  <p className="text-gray-400 text-base sm:text-lg md:text-xl lg:text-2xl px-1 sm:px-2">No dropshipping videos available in this category yet.</p>
                 </div>
               )}
             </>
@@ -314,18 +314,20 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-13 sm:py-17 md:py-21 px-2 sm:px-4">
+      <section className="py-14 sm:py-18 md:py-22 px-2 sm:px-4">
         <div className="container mx-auto text-center">
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-7 md:p-9 lg:p-13 border border-white/10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-5 md:mb-7 px-1 sm:px-2">
+          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-14 border border-white/10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 md:mb-8 px-1 sm:px-2">
               Ready to Start Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dropshipping Journey?</span>
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-5 sm:mb-7 md:mb-9 max-w-2xl mx-auto px-1 sm:px-2">
+            <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto px-1 sm:px-2">
               Join thousands of successful entrepreneurs who have built profitable dropshipping businesses with our proven strategies and comprehensive training materials.
             </p>
-            <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-5 sm:px-7 md:px-9 lg:px-13 py-4 sm:py-5 md:py-6 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-semibold transform hover:scale-105 transition-all duration-300 min-w-[300px] sm:min-w-[340px]">
-              Start Your Dropshipping Business Today
-            </Button>
+            <div className="flex justify-center">
+              <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 sm:px-8 md:px-10 lg:px-14 py-5 sm:py-6 md:py-7 rounded-full text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold transform hover:scale-105 transition-all duration-300 min-w-[280px] sm:min-w-[320px] md:min-w-[360px]">
+                Start Your Dropshipping Business Today
+              </Button>
+            </div>
           </div>
         </div>
       </section>
