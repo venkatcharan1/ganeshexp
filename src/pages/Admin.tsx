@@ -379,7 +379,7 @@ const Admin = () => {
                   videos.map((video, index) => (
                     <div key={video.id} className="border border-slate-600 rounded-lg p-3 sm:p-4 space-y-2 bg-slate-700/50 animate-fade-in hover:shadow-md transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
                       <div className="flex justify-between items-start">
-                        <div className="flex-1 pr-2">
+                        <div className="flex-1 pr-2 min-w-0">
                           <h3 className="font-semibold line-clamp-1 text-white text-sm sm:text-base">{video.title}</h3>
                           <p className="text-xs sm:text-sm text-gray-300 line-clamp-2">
                             {video.description}
@@ -397,12 +397,12 @@ const Admin = () => {
                             </span>
                           </div>
                         </div>
-                        <div className="flex gap-1 sm:gap-2 ml-2">
+                        <div className="flex gap-1 sm:gap-2 ml-2 flex-shrink-0">
                           <Button
                             size="sm"
                             variant="outline"
                             onClick={() => handleEdit(video)}
-                            className="hover:bg-blue-600/20 border-slate-600 text-white p-1 sm:p-2"
+                            className="hover:bg-blue-600/20 border-blue-500/50 text-blue-300 hover:text-white hover:border-blue-400 p-1.5 sm:p-2 bg-blue-950/30"
                           >
                             <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
                           </Button>
@@ -410,7 +410,7 @@ const Admin = () => {
                             size="sm"
                             variant="destructive"
                             onClick={() => handleDelete(video.id)}
-                            className="hover:bg-red-600 p-1 sm:p-2"
+                            className="hover:bg-red-600 p-1.5 sm:p-2 bg-red-600/80"
                           >
                             <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                           </Button>
