@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import VideoCard from "@/components/VideoCard";
@@ -110,7 +109,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 px-2 sm:px-4 mt-12 sm:mt-14 md:mt-16">
+      <section className="relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-16 px-2 sm:px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
         <div className="relative container mx-auto text-center">
           <div className="animate-fade-in-up">
@@ -131,7 +130,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 onClick={scrollToVideos}
-                className="w-full sm:w-auto border-blue-400/50 text-blue-300 bg-blue-950/30 hover:bg-blue-600 hover:text-white hover:border-blue-500 px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm md:text-base lg:text-lg font-semibold transition-all duration-300"
+                className="w-full sm:w-auto border-blue-400 text-blue-300 bg-blue-600/30 hover:bg-blue-600 hover:text-white hover:border-blue-500 px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm md:text-base lg:text-lg font-semibold transition-all duration-300"
               >
                 Watch Free Dropshipping Videos
               </Button>
@@ -206,30 +205,48 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Video Categories Filter */}
+      {/* Video Categories Filter - Redesigned */}
       <section className="py-4 sm:py-6 md:py-8 px-2 sm:px-4">
-        <div className="container mx-auto">
-          <div className="flex justify-center mb-4 sm:mb-6 md:mb-8">
-            <div className="bg-slate-800/90 backdrop-blur-sm rounded-full border border-white/20 p-1 w-full max-w-4xl">
-              <div className="grid grid-cols-1 xs:grid-cols-3 gap-1">
-                {[
-                  { key: 'all', label: 'All Dropshipping Videos' },
-                  { key: 'shorts', label: 'Shorts' },
-                  { key: 'full', label: 'Complete Tutorials' }
-                ].map((category) => (
+        <div className="container mx-auto max-w-4xl">
+          <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center">
+              Choose Your Learning Path
+            </h3>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full max-w-2xl">
+              {[
+                { key: 'all', label: 'All Videos', icon: BookOpen, count: videos.length },
+                { key: 'shorts', label: 'Quick Tips', icon: Play, count: videos.filter(v => v.category === 'shorts').length },
+                { key: 'full', label: 'Full Courses', icon: TrendingUp, count: videos.filter(v => v.category === 'full').length }
+              ].map((category) => {
+                const IconComponent = category.icon;
+                const isActive = activeCategory === category.key;
+                return (
                   <button
                     key={category.key}
                     onClick={() => setActiveCategory(category.key as 'all' | 'shorts' | 'full')}
-                    className={`px-2 sm:px-3 md:px-4 lg:px-6 py-2 sm:py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-medium transition-all duration-300 whitespace-nowrap ${
-                      activeCategory === category.key
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg border border-blue-500/50'
-                        : 'text-gray-200 hover:text-white hover:bg-slate-700/70 border border-transparent'
+                    className={`group relative flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105 ${
+                      isActive
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl shadow-blue-500/25 border-2 border-blue-400/50'
+                        : 'bg-slate-800/60 backdrop-blur-sm text-gray-300 hover:bg-slate-700/70 hover:text-white border-2 border-slate-700/50 hover:border-slate-600/50'
                     }`}
                   >
-                    {category.label}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+                      <IconComponent className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}`} />
+                      <span className="whitespace-nowrap">{category.label}</span>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        isActive 
+                          ? 'bg-white/20 text-white' 
+                          : 'bg-slate-700/50 text-gray-400 group-hover:bg-slate-600/50 group-hover:text-gray-300'
+                      }`}>
+                        {category.count}
+                      </span>
+                    </div>
+                    {isActive && (
+                      <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 animate-pulse" />
+                    )}
                   </button>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -305,7 +322,7 @@ const Index = () => {
             <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto px-1 sm:px-2">
               Join thousands of successful entrepreneurs who have built profitable dropshipping businesses with our proven strategies and comprehensive training materials.
             </p>
-            <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 md:px-8 lg:px-12 py-2 sm:py-3 md:py-4 rounded-full text-xs sm:text-sm md:text-base lg:text-xl font-semibold transform hover:scale-105 transition-all duration-300">
+            <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-4 md:py-5 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold transform hover:scale-105 transition-all duration-300 min-w-[280px] sm:min-w-[320px]">
               Start Your Dropshipping Business Today
             </Button>
           </div>
