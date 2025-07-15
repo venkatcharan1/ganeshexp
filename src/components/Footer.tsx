@@ -1,10 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { Youtube, Facebook, Send, Instagram, Linkedin, Mail } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-slate-900/50 border-t border-white/10">
+  return <footer className="bg-slate-900/50 border-t border-white/10">
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
           <div className="space-y-4">
@@ -17,9 +14,7 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-2 text-gray-300">
               <Mail className="h-4 w-4 text-blue-400" />
-              <a href="mailto:contact@dropshippingacademy.com" className="text-sm md:text-base hover:text-blue-400 transition-colors">
-                contact@dropshippingacademy.com
-              </a>
+              <a href="mailto:contact@dropshippingacademy.com" className="text-sm md:text-base hover:text-blue-400 transition-colors">contact: telugudropshipper@gmail.com</a>
             </div>
           </div>
 
@@ -60,8 +55,6 @@ const Footer = () => {
           <p className="text-sm md:text-base">© 2025 Dropshipping Academy. All rights reserved. Built for dropshipping success and e-commerce education.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
