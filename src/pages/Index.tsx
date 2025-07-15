@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import VideoCard from "@/components/VideoCard";
@@ -27,6 +26,27 @@ const Index = () => {
 
   useEffect(() => {
     fetchVideos();
+    
+    // Scroll animation observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections with scroll-animate class
+    const animateElements = document.querySelectorAll('.scroll-animate');
+    animateElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   const fetchVideos = async () => {
@@ -110,7 +130,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-16 px-2 sm:px-4">
+      <section className="scroll-animate opacity-0 translate-y-8 relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-16 px-2 sm:px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
         <div className="relative container mx-auto text-center">
           <div className="animate-fade-in-up">
@@ -166,7 +186,7 @@ const Index = () => {
       </section>
 
       {/* Dropshipping Course Benefits Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-2 sm:px-4">
+      <section className="scroll-animate opacity-0 translate-y-8 py-12 sm:py-16 md:py-20 px-2 sm:px-4">
         <div className="container mx-auto">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-7 px-1 sm:px-2">
@@ -207,7 +227,7 @@ const Index = () => {
       </section>
 
       {/* Video Categories Filter */}
-      <section className="py-6 sm:py-8 md:py-10 px-2 sm:px-4">
+      <section className="scroll-animate opacity-0 translate-y-8 py-6 sm:py-8 md:py-10 px-2 sm:px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col items-center space-y-6 sm:space-y-8">
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
@@ -254,7 +274,7 @@ const Index = () => {
       </section>
 
       {/* Videos Section */}
-      <section id="videos-section" className="py-10 sm:py-12 md:py-16 px-2 sm:px-4">
+      <section id="videos-section" className="scroll-animate opacity-0 translate-y-8 py-10 sm:py-12 md:py-16 px-2 sm:px-4">
         <div className="container mx-auto">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-7 px-1 sm:px-2">
@@ -314,7 +334,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 px-2 sm:px-4">
+      <section className="scroll-animate opacity-0 translate-y-8 py-16 sm:py-20 md:py-24 px-2 sm:px-4">
         <div className="container mx-auto text-center">
           <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl p-7 sm:p-9 md:p-12 lg:p-16 border border-white/10">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-7 md:mb-9 px-1 sm:px-2">
@@ -324,7 +344,7 @@ const Index = () => {
               Join thousands of successful entrepreneurs who have built profitable dropshipping businesses with our proven strategies and comprehensive training materials.
             </p>
             <div className="flex justify-center px-1 sm:px-2">
-              <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 md:px-8 lg:px-12 py-4 sm:py-5 md:py-6 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold transform hover:scale-105 transition-all duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-center">
+              <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-3 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-5 md:py-6 rounded-full text-xs sm:text-sm md:text-base lg:text-lg font-semibold transform hover:scale-105 transition-all duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-center">
                 Start Your Dropshipping Business Today
               </Button>
             </div>
@@ -332,7 +352,43 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Contact Form Section */}
+      <section className="scroll-animate opacity-0 translate-y-8 py-16 sm:py-20 md:py-24 px-2 sm:px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-7 px-1 sm:px-2">
+              Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Touch</span>
+            </h2>
+            <p className="text-gray-300 text-lg sm:text-xl md:text-2xl lg:text-3xl max-w-3xl mx-auto px-1 sm:px-2">
+              Have questions about our dropshipping course? Want to share your success story? We'd love to hear from you!
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-white/10 shadow-2xl">
+              <div 
+                className="visme_d rounded-xl sm:rounded-2xl overflow-hidden" 
+                data-title="Contact Form" 
+                data-url="koeqq00k-contact-form" 
+                data-domain="forms" 
+                data-full-page="false" 
+                data-min-height="500px" 
+                data-form-id="136299"
+                style={{
+                  width: '100%',
+                  minHeight: '500px',
+                  borderRadius: '1rem'
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
+      
+      {/* Load Visme Forms Script */}
+      <script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script>
     </div>
   );
 };
