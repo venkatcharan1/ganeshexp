@@ -320,14 +320,49 @@ All colors MUST be HSL.
   width: 100% !important;
   border-radius: 1rem !important;
   overflow: hidden !important;
+  min-height: 500px !important;
+  background: transparent !important;
 }
 
 .visme_d iframe {
   border-radius: 1rem !important;
   border: none !important;
+  width: 100% !important;
+  min-height: 500px !important;
+  height: auto !important;
+  background: white !important;
+}
+
+/* Force iframe to display */
+.visme_d iframe[src] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Responsive Enhancements */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (max-width: 990px) {
+  .container {
+    max-width: 768px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .grid-cols-1.md\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-1.md\\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .animate-fade-in {
     animation-duration: 0.6s;
@@ -342,10 +377,52 @@ All colors MUST be HSL.
   .visme_d {
     min-height: 400px !important;
   }
+  
+  .visme_d iframe {
+    min-height: 400px !important;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-cols-1.sm\\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-cols-1.sm\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
   .visme_d {
     min-height: 350px !important;
+  }
+  
+  .visme_d iframe {
+    min-height: 350px !important;
+  }
+  
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Ensure proper spacing and layout on all devices */
+@media (min-width: 1024px) {
+  .text-xs.lg\\:text-sm.xl\\:text-base {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .text-xs.lg\\:text-sm.xl\\:text-base {
+    font-size: 1rem;
   }
 }

@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Youtube, Facebook, Send, Instagram, Linkedin } from "lucide-react";
+import { Youtube, Facebook, Send, Instagram, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -15,6 +15,12 @@ const Footer = () => {
             <p className="text-gray-300 text-sm md:text-base">
               Your ultimate guide to successful dropshipping. Learn proven strategies, tips, and techniques to build a profitable dropshipping business from scratch.
             </p>
+            <div className="flex items-center space-x-2 text-gray-300">
+              <Mail className="h-4 w-4 text-blue-400" />
+              <a href="mailto:contact@dropshippingacademy.com" className="text-sm md:text-base hover:text-blue-400 transition-colors">
+                contact@dropshippingacademy.com
+              </a>
+            </div>
           </div>
 
           <div>
