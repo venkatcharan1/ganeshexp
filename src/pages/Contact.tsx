@@ -1,44 +1,12 @@
 
 import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
-import { Youtube, Menu, Mail } from "lucide-react";
+import Header from "@/components/Header";
+import { Mail } from "lucide-react";
 
 const Contact = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-white/10">
-        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-1 sm:space-x-2 text-base sm:text-xl md:text-2xl font-bold text-white">
-              <Youtube className="h-5 sm:h-6 md:h-8 w-5 sm:w-6 md:w-8 text-red-600" />
-              <span className="text-sm sm:text-base md:text-xl lg:text-2xl">Dropshipping Academy</span>
-            </div>
-            <div className="hidden md:flex space-x-3 lg:space-x-6">
-              <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Home</Link>
-              <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Contact</Link>
-              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Privacy Policy</Link>
-              <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Terms & Conditions</Link>
-              <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base">Disclaimer</Link>
-            </div>
-            {/* Mobile Menu */}
-            <div className="md:hidden">
-              <details className="dropdown">
-                <summary className="text-white cursor-pointer list-none">
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                </summary>
-                <div className="absolute right-2 sm:right-4 top-12 sm:top-16 bg-slate-900 rounded-lg p-3 sm:p-4 space-y-2 border border-white/10 z-50 min-w-[200px]">
-                  <Link to="/" className="block text-gray-300 hover:text-white transition-colors text-sm">Home</Link>
-                  <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors text-sm">Contact</Link>
-                  <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</Link>
-                  <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors text-sm">Terms & Conditions</Link>
-                  <Link to="/disclaimer" className="block text-gray-300 hover:text-white transition-colors text-sm">Disclaimer</Link>
-                </div>
-              </details>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       <main className="pt-20 sm:pt-24 pb-12 sm:pb-16">
         <div className="container mx-auto px-2 sm:px-4 max-w-4xl">
