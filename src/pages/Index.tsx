@@ -119,6 +119,7 @@ const Index = () => {
             </div>
             <div className="hidden md:flex space-x-2 lg:space-x-4 xl:space-x-6">
               <Link to="/" className="text-gray-300 hover:text-white transition-colors text-xs lg:text-sm xl:text-base">Home</Link>
+              <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-xs lg:text-sm xl:text-base">About</Link>
               <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-xs lg:text-sm xl:text-base">Contact</Link>
               <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors text-xs lg:text-sm xl:text-base">Privacy Policy</Link>
               <Link to="/terms-conditions" className="text-gray-300 hover:text-white transition-colors text-xs lg:text-sm xl:text-base">Terms & Conditions</Link>
@@ -132,6 +133,7 @@ const Index = () => {
                 </summary>
                 <div className="absolute right-1 sm:right-2 top-10 sm:top-12 bg-slate-900 rounded-lg p-2 sm:p-3 space-y-1 sm:space-y-2 border border-white/10 z-50 min-w-[180px] sm:min-w-[200px]">
                   <Link to="/" className="block text-gray-300 hover:text-white transition-colors text-sm">Home</Link>
+                  <Link to="/about" className="block text-gray-300 hover:text-white transition-colors text-sm">About</Link>
                   <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors text-sm">Contact</Link>
                   <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</Link>
                   <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors text-sm">Terms & Conditions</Link>
