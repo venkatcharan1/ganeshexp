@@ -29,6 +29,7 @@ const TermsConditions = () => {
                 </summary>
                 <div className="absolute right-2 sm:right-4 top-12 sm:top-16 bg-slate-900 rounded-lg p-3 sm:p-4 space-y-2 border border-white/10 z-50 min-w-[200px]">
                   <Link to="/" className="block text-gray-300 hover:text-white transition-colors text-sm">Home</Link>
+                  <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-xs lg:text-sm xl:text-base">About</Link>
                   <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors text-sm">Contact</Link>
                   <Link to="/privacy-policy" className="block text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</Link>
                   <Link to="/terms-conditions" className="block text-gray-300 hover:text-white transition-colors text-sm">Terms & Conditions</Link>
